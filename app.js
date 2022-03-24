@@ -49,23 +49,23 @@
 // // fruits.pop(); removes last element from the array
 // console.log(fruits);
 
-const todos = [
-    {
-        id : 1,
-        text : 'Its Piyush',
-        isCompleted : true
-    },
-    {
-        id : 1,
-        text : 'Its Rahul',
-        isCompleted : true
-    },
-    {
-        id : 1,
-        text : 'Its Prashant',
-        isCompleted : false
-    }
-];
+// const todos = [
+//     {
+//         id : 1,
+//         text : 'Its Piyush',
+//         isCompleted : true
+//     },
+//     {
+//         id : 2,
+//         text : 'Its Rahul',
+//         isCompleted : true
+//     },
+//     {
+//         id : 3,
+//         text : 'Its Prashant',
+//         isCompleted : false
+//     }
+// ];
 
 // console.log(todos);
 // console.log(todos[1].text);
@@ -109,42 +109,121 @@ const todos = [
 
     //if-else statement
 
-    const x = 10;
-    const y = 55;
-    if (x==10 || y == 55 ){
-        console.log('x is 10 and y is 55');
-    } else if(x > 10 && y > 50) {
-        console.log('x is greater than 10');
-    } 
-    else {
-        console.log('x is not 10');
-    }
+    // const x = 10;
+    // const y = 55;
+    // if (x==10 || y == 55 ){
+    //     console.log('x is 10 and y is 55');
+    // } else if(x > 10 && y > 50) {
+    //     console.log('x is greater than 10');
+    // } else {
+    //     console.log('x is not 10');
+    // }
 
 
     //? = ternary operator
-    const z = 11;
+    // const z = 11;
 
-    const color = x>10 ? 'red' : 'blue';
-    console.log(color);
+    // const color = x>10 ? 'red' : 'blue';
+    // console.log(color);
 
 
     //switch statement
 
-    const colors = 'green';
-    switch(colors){
-        case 'red':
-            console.log('color is red');
-            break;
-        case 'blue':
-            console.log('color is blue');
-            break;
-        default:
-            console.log('there is no color');
-            break;
+//     const colors = 'green';
+//     switch(colors){
+//         case 'red':
+//             console.log('color is red');
+//             break;
+//         case 'blue':
+//             console.log('color is blue');
+//             break;
+//         default:
+//             console.log('there is no color');
+//             break;
+//     }
+
+// function addNums(num1 = 1, num2 = 2){
+//     return num1 + num2;
+// }
+// console.log(addNums());
+
+//constructor function
+// function Person(firstName, lastName, dob){
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.dob = new Date(dob); //add new keyword to use functions like getFullyear() and others
+
+//     this.getBirthYear = function(){
+//         return this.dob.getFullYear();
+//     }
+
+//     this.getFullName = function(){
+//         return `${this.firstName} ${this.lastName}`
+//     }
+// }
+
+//Instantiate object
+// const person1 = new Person('John', 'Doe', '4-3-1980');
+// const person2 = new Person('Mary', 'Danny', '4-3-1970');
+
+// console.log(person1);
+// console.log(person2);
+// console.log(person1.dob.getFullYear());
+// console.log(person2.getFullName());
+
+//Single Element
+// console.log(document.getElementById('my-form'));
+//Or Use
+// console.log(document.querySelector('my-form'));
+
+
+//Multiple Element
+//It will select more than one element
+// console.log(document.querySelectorAll('.item')); 
+// console.log(document.getElementsByClassName('item'));
+
+
+// const ul = document.querySelector('.items');
+// ul.remove(); // It will remove all the elements in unordered list 
+// ul.lastElementChild.remove();
+// ul.firstElementChild.textContent = "Hello";
+// ul.children[1].innerText = 'Brad';
+// ul.lastElementChild.innerHTML = '<h1>Hello</h1>';
+
+
+// const btn = document.querySelector('.btn');
+// btn.style.background = "red";
+// btn.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     console.log(e);
+//     console.log(e.target); // it will show target elements in console
+//     document.querySelector('#my-form').getElementsByClassName.background = '#ccc'; //It will change the color of the bg-dark after clicking on submit button
+//     document.querySelector('body').classList.add('bg-dark'); 
+// })
+
+const myForm = document.querySelector('#my-form');
+const nameInput = document.querySelector('#name');
+const emailInput = document.querySelector('#email');
+const msg = document.querySelector('#msg');
+const userList = document.querySelector('#users');
+
+myForm.addEventListener('submit', onSubmit);
+function onSubmit(e){
+    e.preventDefault();
+    // console.log(nameInput.value);
+    if(nameInput.value === '' || emailInput.value === ''){
+        // alert('Please enter fields');
+        msg.classList.add('error');
+        msg.innerHTML = 'Please enter all fields';
+        setTimeout(() => msg.remove(), 3000); 
+    } else {
+        // console.log('success');
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(`${nameInput.value} : ${emailInput.value}`));
+
+        userList.appendChild(li);
+        //Clear Fields
+        nameInput.value = '';
+        emailInput.value = '';
     }
-
-function addNums(num1 = 1, num2 = 2){
-    return num1 + num2;
 }
-
-console.log(addNums());
